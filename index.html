@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--FontAwesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+  <!--BootStrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <!--CSS File Link-->
+    <link rel="stylesheet" href="style.css">
+  <!--Firebase Link-->
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase-database.js"></script>
+  <!--jQuery-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!--moment.js Link-->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <!--Bootstrap JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <!--Popper?-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+  <!--Javascript file link-->
+    <script type="text/javascript" src="app.js"></script>
+  <title>Ellie's Train Schedule</title>
+</head>
+<body>
+  <nav class="navbar fixed-top">
+    <div class="navbar-brand">
+    </div>
+    <div class="dropdown">
+      <i id="dropdownMenu" class=" dropdown-btn fas fa-fish fa-flip-horizontal text-dark" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
+        <a class="dropdown-item" href="https://imi-tating.github.io/games.html">Return to All Games</a>
+      </div>
+    </div>
+  </nav>
+  <div id="jumbotron" class="jumbotron jumbotron-fluid text-center">
+    <h1 id="game-title" class="display-4">Ellie's Train Schedule</h1>
+  </div>
+
+  <div id="main-content">
+    <div class="card border-secondary">
+      <h6 class="card-header">Current Train Schedule</h6>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Train Name</th>
+            <th scope="col">Destination</th>
+            <th scope="col">Frequency (min)</th>
+            <th scope="col">Next Arrival</th>
+            <th scope="col">Minutes Away</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card border-secondary">
+      <h6 class="card-header">Add Train to Schedule</h6>
+      <form class="card-body" action="index.html" method="post">
+        <label for="add-train-name">Train Name</label>
+        <input type="train" class="form-control" id="add-train-name">
+        <label for="add-train-destination">Destination</label>
+        <input type="train" class="form-control" id="add-train-destination">
+        <label for="add-train-time">First Train Time (HH:mm - militray time)</label>
+        <input type="train" class="form-control" id="add-train-time">
+        <label for="add-train-frequency">Frequency (min)</label>
+        <input type="train" class="form-control" id="add-train-frequency">
+        <button id="submit-button" class="btn text-dark" type="submit" name="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

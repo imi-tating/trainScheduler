@@ -1,0 +1,32 @@
+.fa-fish {
+  font-size: 1.5rem;
+  margin-right: -.5rem;
+}
+
+#jumbotron {
+  background-color: LightBlue;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+#game-title {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+#main-content {
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.card {
+  margin-bottom: 2rem;
+}
+
+input {
+  margin-bottom: 1.2rem;
+}
+
+#submit-button {
+  background-color: LightBlue;
+}
