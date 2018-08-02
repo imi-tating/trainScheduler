@@ -5,15 +5,81 @@
 
 #jumbotron {
   /* background-color: LightBlue; */
-  background: linear-gradient(to right, #56cc99, #2f80ed);
-  padding: 1rem;
+  background: linear-gradient(to top, skyblue, #2f80ed);
+  /* padding: 1rem; */
   margin-bottom: 1rem;
+  max-height: 20rem;
 }
 
 #game-title {
-  font-size: 2rem;
+  font-size: 3.4rem;
   margin-top: 1rem;
+  position: relative;
+  z-index: 2;
 }
+
+#cloud-one {
+  z-index: 1;
+  top: -90px;
+  animation: float 42s infinite;
+  opacity: .9;
+}
+
+#cloud-two {
+  z-index: 3;
+  top: -50px;
+  animation: float 60s infinite;
+  transform: scale(1.4);
+  opacity: .9;
+}
+
+#cloud-three {
+  z-index: 2;
+  top: -30px;
+  animation: float 27s infinite;
+  transform: scale(.5);
+  opacity: .9;
+}
+
+#cloud-four {
+  z-index: 1;
+  top: -150px;
+  animation: float 32s infinite;
+  transform: scale(.8);
+  opacity: .9;
+}
+
+.clouds {
+  width: 4rem;
+  height: 4rem;
+  background: white;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 60px -40px 1px 1rem white,
+              130px -20px 1px .2rem white;
+}
+
+.clouds::before {
+  width: 5rem;
+  height: 3rem;
+  background: white;
+  border-radius: 50%;
+  content: '';
+  position: absolute;
+  left: 130px;
+  top: 12px;
+  box-shadow: -70px 10px 1px 10px white;
+}
+
+@keyframes float {
+  0% {
+    margin-left: -80%;
+  }
+  100% {
+    margin-left: 110%;
+  }
+}
+
 
 #main-content {
   margin: 0 auto;
@@ -26,7 +92,7 @@
 }
 
 .card-header {
-  width: 150%;
+  width: 100%;
 }
 
 th {
