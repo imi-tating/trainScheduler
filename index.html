@@ -38,6 +38,10 @@
   </nav>
   <div id="jumbotron" class="jumbotron jumbotron-fluid text-center">
     <h1 id="game-title" class="display-4">Ellie's Train Schedule</h1>
+    <div class="train">
+      <div class="train-wheels"></div>
+
+    </div>
   </div>
 
   <div id="main-content">
@@ -63,13 +67,13 @@
       <h6 class="card-header">Add Train to Schedule</h6>
       <form class="card-body" action="index.html" method="post">
         <label for="add-train-name">Train Name</label>
-        <input type="train" class="form-control" id="add-train-name">
+        <input type="train" class="form-control" id="add-train-name" required>
         <label for="add-train-destination">Destination</label>
-        <input type="train" class="form-control" id="add-train-destination">
+        <input type="train" class="form-control" id="add-train-destination" required>
         <label for="add-train-time">First Train Time (HH:mm - militray time)</label>
-        <input type="train" class="form-control" id="add-train-time">
+        <input type="train" class="form-control" id="add-train-time" required>
         <label for="add-train-frequency">Frequency (min)</label>
-        <input type="train" class="form-control" id="add-train-frequency">
+        <input type="train" class="form-control" id="add-train-frequency" required>
         <button id="submit-button" class="btn text-dark" type="submit" name="submit">Submit</button>
       </form>
     </div>
