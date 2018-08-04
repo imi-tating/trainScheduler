@@ -84,6 +84,7 @@
 #main-content {
   margin: 0 auto;
   max-width: 90%;
+  font-size: 1.4rem;
 }
 
 .card {
@@ -93,6 +94,8 @@
 
 .card-header {
   width: 100%;
+  font-size: 1.6rem;
+  background: white;
 }
 
 th {
