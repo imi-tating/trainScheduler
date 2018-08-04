@@ -11,25 +11,17 @@
 
   var database = firebase.database();
 
-  function generateTrainSchedule(name, destination, time, frequency) {
-    var convertedTime = moment(time, "HH:mm").subtract(1, "years");
-    var currentTime = moment();
-    var timeDifference = moment().diff(moment(convertedTime), "minutes");
-    var timeRemainder = timeDifference % frequency;
-
-    var minAway = frequency - timeRemainder;
-    var nextArrival = moment().add(minAway, "minutes");
-    nextArrival = moment(nextArrival).format("h:mm");
-
+  function submitTrainSchedule(name, destination, time, frequency) {
+    var convertedStartTime = moment(time, "HH:mm").subtract(1, "years").format("x");
     //pushes retrieved data to firebase database
     database.ref().push({
       name: name,
       destination: destination,
       frequency: frequency,
-      next: nextArrival,
-      min: minAway
+      time: convertedStartTime
     });
   }
+
 
   function addPrevStoredTrainSchedule() {
     database.ref().on("child_added", function(childSnapshot) {
@@ -38,14 +30,21 @@
       var prevTrainName = childSnapshot.val().name;
       var prevTrainDestination = childSnapshot.val().destination;
       var prevTrainFrequency = childSnapshot.val().frequency;
-      var prevTrainNextArrival = childSnapshot.val().next;
-      var prevTrainMinAway = childSnapshot.val().min;
+      var prevTrainConvertedTime = childSnapshot.val().time;
+      // convert prevTrainConvertedTime to minutes to create minAway & nextArrival
+      var currentTime = moment();
+      var timeDifference = moment(currentTime).diff(moment(prevTrainConvertedTime, "HH:mm"), "minutes");
+      var timeRemainder = timeDifference % prevTrainFrequency;
+      var minAway = prevTrainFrequency - timeRemainder;
+      var nextArrival = moment().add(minAway, "minutes");
+      nextArrival = moment(nextArrival).format("HH:mm");
+
 
       prevTrainName = $("<td>").text(prevTrainName);
       prevTrainDestination = $("<td>").text(prevTrainDestination);
       prevTrainFrequency = $("<td>").text(prevTrainFrequency);
-      prevTrainNextArrival = $("<td>").text(prevTrainNextArrival);
-      prevTrainMinAway = $("<td>").text(prevTrainMinAway);
+      prevTrainNextArrival = $("<td>").text(nextArrival);
+      prevTrainMinAway = $("<td>").text(minAway);
 
       var newTRwo = $("<tr>");
       newTRwo.append(prevTrainName, prevTrainDestination, prevTrainFrequency, prevTrainNextArrival, prevTrainMinAway);
@@ -57,7 +56,7 @@
 
 $(document).ready(function(){
 
-  addPrevStoredTrainSchedule()
+  addPrevStoredTrainSchedule();
 
   $("#submit-button").click(function(event){
     //prevents page from being auto-reloaded
@@ -69,7 +68,7 @@ $(document).ready(function(){
     var trainTimeBeingAdded = $("#add-train-time").val().trim()
     var trainFrequencyBeingAdded = $("#add-train-frequency").val().trim()
 
-    generateTrainSchedule(trainNameBeingAdded, trainDestinationBeingAdded, trainTimeBeingAdded, trainFrequencyBeingAdded)
+    submitTrainSchedule(trainNameBeingAdded, trainDestinationBeingAdded, trainTimeBeingAdded, trainFrequencyBeingAdded)
 
     //clear form inputs
     $("#add-train-name").val("")

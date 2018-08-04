@@ -108,13 +108,24 @@ input {
 } */
 
 #submit-button {
-  background-color: LightBlue;
+  background: linear-gradient(to bottom, skyblue, #2f80ed);
+  border: none;
 }
 
 @media screen and (min-width: 80rem) {
   .fa-fish {
     font-size: 2.3rem;
     margin-right: .5rem;
+  }
+
+  #jumbotron {
+    margin-bottom: 2rem;
+    max-height: 24rem;
+  }
+
+  #game-title {
+    font-size: 5rem;
+    margin-top: 1rem;
   }
 
 }
